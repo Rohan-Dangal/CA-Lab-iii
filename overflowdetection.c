@@ -1,35 +1,34 @@
-#include <stdio.h>
-#include <limits.h>  // For INT_MAX and INT_MIN
-int detectOverflow(int a, int b) {
-    if (a > 0 && b > 0 && a > INT_MAX - b) {
-        // 2 tai number positive cha ra a ko value INT_MAX bata badi cha bhane overflow hunecha
-        return 1;  // Overflow detected
+#include<stdio.h>
+#include<string.h>
+int countOnes(char*binary){
+    int count = 0;
+    for (int i = 0; i < strlen(binary); i++)
+    {
+        if (binary[i]=='1')
+        {
+            count++;
+        }
+        
     }
-    // Negative number ko case ko lagi
-    if (a < 0 && b < 0 && a < INT_MIN - b) {
-        // number negative cha ra a ko value INT_MIN bata kam cha bhane underflow hunecha
-        return -1;  // Underflow detected
-    }
+    return count;
     
-    return 0;  // No overflow or underflow
 }
-
-int main() {
-    int num1, num2;
-    printf("Enter two numbers: ");
-    scanf("%d %d", &num1, &num2);
-
-    int result = detectOverflow(num1, num2);//function call
-
-    if (result == 1) {
-        printf("Overflow detected! The sum is too large.\n");
-    } else if (result == -1) {
-        
-        printf("Underflow detected! The sum is too small.\n");
-    } else {
-        
-        printf("Sum: %d\n", num1 + num2);
+void getParity(int count){
+    if(count % 2 ==0){
+        printf("even parity\t:0\n");
+        printf("odd parity\t:1\n");
     }
-
+    else
+    printf("even parity\t:1\n");
+    printf("odd parity \t:0\n");
+}
+int main()
+{
+    char binary[100];
+    printf("enter the binary number:");
+    scanf("%s",binary);
+    int onescount = countOnes(binary);
+    printf("number of ones:%d\n",onescount);
+    getParity(onescount);
     return 0;
 }
