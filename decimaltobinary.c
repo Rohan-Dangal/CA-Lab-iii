@@ -11,7 +11,7 @@ void decimalToBinary(int n) {
     }
     while (n > 0) {
         binary[i] = n % 2;  // Baaki ko value (0 ya 1) rakhne
-        n = n / 2;           // Number lai 2 le divide garne
+        n = n / 2;          
         i++;                 
     }
 
